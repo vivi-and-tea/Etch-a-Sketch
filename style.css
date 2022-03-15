@@ -1,0 +1,50 @@
+body,
+html {
+  height: 100vh;
+  background-color: aquamarine;
+}
+
+.inactive {
+  background-color: white;
+}
+.active-black {
+  background-color: black;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container > div {
+  flex: auto;
+}
+
+.buffer {
+  height: 10vh;
+}
+.middle {
+  display: flex;
+  flex-direction: row;
+  height: 80vh;
+  justify-content: space-between;
+}
+
+.nav {
+  width: 10vw;
+}
+
+.left,
+.right {
+  background-color: burlywood;
+}
+
+.grid {
+  background-color: red;
+  width: 40vw;
+  height: 40vw;
+}
+
+#sketchpad > div {
+  display: flex;
+}
