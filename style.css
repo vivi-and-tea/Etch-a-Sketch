@@ -4,13 +4,6 @@ html {
   background-color: aquamarine;
 }
 
-.inactive {
-  background-color: white;
-}
-.active-black {
-  background-color: black;
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -40,7 +33,7 @@ html {
 }
 
 .grid {
-  background-color: red;
+  background-color: white;
   width: 40vw;
   height: 40vw;
 }
