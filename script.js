@@ -14,22 +14,26 @@ function randomColorHex() {
 // Get sizes for the sketchpad grid: how many cells across, the width of the sketchpad on the screen, the size of each cell.
 let pixelNumber = 16;
 let sketchpadWidth = document.getElementById("sketchpad").clientWidth;
-let cellSize = sketchpadWidth / pixelNumber + "px";
+// let cellSize = sketchpadWidth / pixelNumber + "px";
 
 // Create the sketchpad grid.
-for (var i = 0; i < pixelNumber; i++) {
-  var row = document.createElement("div");
-  row.style.flex = "1";
-  for (var j = 0; j < pixelNumber; j++) {
-    var cell = document.createElement("div");
-    cell.style.width = cellSize;
-    cell.style.height = cellSize;
-    cell.classList.add("pixel");
-    cell.style.flex = "1";
-    row.appendChild(cell);
+function createSketchPad(pixels) {
+  let cellSize = sketchpadWidth / pixelNumber + "px";
+  for (let i = 0; i < pixels; i++) {
+    var row = document.createElement("div");
+    row.style.flex = "1";
+    for (let j = 0; j < pixels; j++) {
+      let cell = document.createElement("div");
+      cell.style.width = cellSize;
+      cell.style.height = cellSize;
+      cell.classList.add("pixel");
+      cell.style.flex = "1";
+      row.appendChild(cell);
+    }
+    document.getElementById("sketchpad").appendChild(row);
   }
-  document.getElementById("sketchpad").appendChild(row);
 }
+createSketchPad(pixelNumber);
 
 let pixels = document.getElementsByClassName("pixel");
 // Default mouseover color change effect on cells.
@@ -38,6 +42,38 @@ let pixels = document.getElementsByClassName("pixel");
     item.target.style.backgroundColor = "black";
   });
 });
+
+let slider = document.getElementById("sizeSlider");
+
+// Change size of sketchpad grid.
+let sizeButton = document.getElementById("newSizeButton");
+newSizeButton.addEventListener("click", function () {
+  document.getElementById("sketchpad").replaceChildren();
+  // TODO: Change this to reflect actual user choice and not just "100"
+  let cellSize = sketchpadWidth / slider.value + "px";
+  let pixels = slider.value;
+  for (let i = 0; i < pixels; i++) {
+    let row = document.createElement("div");
+    row.style.flex = "1";
+    for (let j = 0; j < pixels; j++) {
+      let cell = document.createElement("div");
+      cell.style.width = cellSize;
+      cell.style.height = cellSize;
+      cell.classList.add("pixel");
+      cell.style.flex = "1";
+      row.appendChild(cell);
+    }
+    document.getElementById("sketchpad").appendChild(row);
+  }
+  blackButton.click();
+});
+
+let sliderValue = document.getElementById("sliderValue");
+sliderValue.textContent = slider.value;
+
+slider.oninput = function () {
+  sliderValue.innerHTML = this.value;
+};
 
 // Generate random colors.
 let randomColorButton = document.getElementById("randomColorButton");
@@ -62,7 +98,7 @@ blackButton.addEventListener("click", function () {
 // Clear the grid.
 let clearButton = document.getElementById("clearButton");
 clearButton.addEventListener("click", function () {
-  for (var i = 0, max = pixels.length; i < max; i++) {
+  for (let i = 0, max = pixels.length; i < max; i++) {
     pixels[i].style.backgroundColor = "white";
   }
 });

@@ -1,7 +1,33 @@
 body,
 html {
   height: 100vh;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(181, 181, 181, 1) 100%
+  );
+}
+
+button {
+  font-family: "Press Start 2P", cursive;
+  background-color: rgb(202, 202, 202);
+  padding: 0.5em;
+  box-shadow: 4px 4px #888888;
+}
+button:hover {
+  background-color: rgb(147, 175, 212);
+}
+
+.pressstart {
+  font-family: "Press Start 2P", cursive;
+}
+
+.title {
+  font-size: 4em;
+}
+.slider {
+  width: 100%;
 }
 
 .container {
@@ -25,17 +51,15 @@ html {
 
 .nav {
   width: 10vw;
-}
-
-.left,
-.right {
-  background-color: burlywood;
+  margin-right: 10px;
 }
 
 .grid {
   background-color: white;
   width: 40vw;
   height: 40vw;
+  border: solid black 1px;
+  box-shadow: 4px 4px #c2c2c2;
 }
 
 #sketchpad > div {
